@@ -2,147 +2,406 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>rrkulkarni108.github.io</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Radhika Kulkarni | Statistics, Texas A&amp;M</title>
+  <meta name="description" content="Radhika Kulkarni, PhD student in Statistics at Texas A&amp;M University. Research in wavelet analysis and Bayesian statistics.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: "Georgia", serif;
-      background-color: #e8edf1;
-      color: #333;
-      margin: 0;
-      padding: 40px 20px;
-    }
-    .container {
-      max-width: 1200px;
-      margin-left: 60px;
-      margin-right: auto;
-      padding: 0 40px;
-      text-align: left;
+    :root {
+      --paper: #fafbfc;
+      --ink: #1c2330;
+      --muted: #5a6474;
+      --rule: #dde2e8;
+      --accent: #6b1d24;   
+      --link: #1f4e8c;
+      --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+      --sans: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
     }
 
-    .name-header {
-      text-align: center;
-      font-size: 2.5em;
-      font-weight: bold;
-      margin-bottom: 30px;
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 1.075rem;
+      line-height: 1.65;
     }
-    img {
-      width: 220px;
-      margin: 0 auto 30px auto;
-      display: block;
+
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 40px;
     }
-    h1 {
-      font-size: 1.8em;
-      margin-top: 2.5em;
-      margin-bottom: 0.5em;
-    }
-    h2, h3 {
-      margin-top: 2em;
-      margin-bottom: 0.5em;
-    }
-    a {
-      color: #0645AD;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    ul {
-      padding-left: 1.5em;
-    }
-    footer {
-      font-size: 0.9em;
-      margin-top: 60px;
-      color: #666;
-      text-align: center;
-    }
-    .intro {
+
+    /* ---------- Header ---------- */
+    header.intro {
       display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      margin-bottom: 40px;
+      gap: 32px;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
     .intro img {
-      width: 180px;
-      margin: 0;
-      display: block;
-    }
-    
-    .contact {
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-    ul.compact-list {
-      padding-left: 1.5em;
-      margin-top: 0.5em;
-      margin-bottom: 2em;
-      line-height: 1.5;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 1px var(--rule);
+      flex-shrink: 0;
     }
 
+    .intro-text { flex: 1; min-width: 240px; }
+
+    .intro h1 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 2.6rem;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin: 0 0 6px;
+    }
+
+    .role {
+      font-family: var(--sans);
+      font-size: 1rem;
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+
+    .contact {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      margin: 0 0 14px;
+      line-height: 1.6;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .links a {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--accent);
+      border: 1px solid currentColor;
+      border-radius: 4px;
+      padding: 3px 12px;
+      text-decoration: none;
+    }
+
+    .links a:hover { background: var(--accent); color: #fff; }
+
+    /* Wavelet divider: a Morlet wavelet */
+    .wavelet {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 36px 0 8px;
+    }
+
+    .wavelet path {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 1.6;
+      stroke-linejoin: round;
+      stroke-dasharray: 1400;
+      stroke-dashoffset: 1400;
+      animation: draw 1.8s ease-out 0.2s forwards;
+    }
+
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .wavelet path { animation: none; stroke-dashoffset: 0; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ---------- Nav ---------- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 8px;
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 22px;
+      list-style: none;
+      margin: 0;
+      padding: 12px 0;
+    }
+
+    nav a {
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    /* ---------- Sections ---------- */
+    section { scroll-margin-top: 56px; }
+
+    h2 {
+      font-family: var(--sans);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 2.4em 0 0.7em;
+    }
+
+    p { margin: 0 0 1em; }
+
+    a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    a:hover { color: var(--accent); }
+
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    /* Dated entries (education, experience, awards) */
+    .entries {
+      display: grid;
+      grid-template-columns: 11rem 1fr;
+      gap: 10px 20px;
+      margin: 0;
+    }
+
+    .entries dt {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: var(--muted);
+      padding-top: 3px;
+    }
+
+    .entries dd { margin: 0; }
+
+    .entries .sub { display: block; color: var(--muted); font-size: 0.95rem; }
+
+    /* Teaching table */
+    .table-wrap { overflow-x: auto; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.98rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px 12px 8px 0;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+    }
+
+    th {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    td.course { font-family: var(--sans); font-size: 0.92rem; white-space: nowrap; }
+    td.terms { color: var(--muted); font-size: 0.92rem; }
+
+    /* Publications */
+    .pubs { padding-left: 1.2em; }
+    .pubs li { margin-bottom: 0.9em; }
+
+    footer {
+      margin-top: 64px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule);
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ---------- Mobile ---------- */
+    @media (max-width: 600px) {
+      .page { padding-top: 32px; }
+      header.intro { gap: 20px; }
+      .intro img { width: 112px; height: 112px; }
+      .intro h1 { font-size: 2rem; }
+      .entries { grid-template-columns: 1fr; gap: 2px; }
+      .entries dd { margin-bottom: 12px; }
+      td.course { white-space: normal; }
+    }
   </style>
 </head>
 <body>
+  <div class="page">
 
-  <h1 class="name-header">Radhika Kulkarni</h1>
-  <div class="container">
-    
-    
-    <div class="intro">
-      <img src="Radhika_Kulkarni_statspage_profilepic_jpg.jpg" alt="Profile Picture">
-      <div class="contact">
-        <p><strong>Department of Statistics</strong><br>Texas A&M University</p>
-        <p><strong>Office:</strong> Blocker 419</p>
-        <p><strong>Email:</strong> rrkulkarni [at] tamu [dot] edu</p>
+    <header class="intro">
+      <img src="Radhika_Kulkarni_statspage_profilepic_jpg.jpg" alt="Photo of Radhika Kulkarni">
+      <div class="intro-text">
+        <h1>Radhika Kulkarni</h1>
+        <p class="role">PhD Student, Department of Statistics, Texas A&amp;M University</p>
+        <p class="contact">
+          Office: Blocker 419<br>
+          Email: rrkulkarni [at] tamu [dot] edu
+        </p>
+        <ul class="links">
+          <!-- need to upload my CV as cv.pdf to the repo, then uncomment this:
+          <li><a href="cv.pdf">CV</a></li>
+          -->
+          <li><a href="https://github.com/rrkulkarni108">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/radhika-kulkarni108">LinkedIn</a></li>
+          <!-- at some point I need to make a google scholar, then uncomment this:
+          <li><a href="https://scholar.google.com/citations?user=YOUR_ID">Google Scholar</a></li>
+          -->
+        </ul>
       </div>
-    </div>
+    </header>
 
-    <h1>About</h1>
-    <p>
-      I am a third-year PhD Statistics student at Texas A&M working with of <a href = "https://people.tamu.edu/~brani/"> Brani Vidakovic</a>. 
-      My research area lies in the intersection of wavelet analysis and Bayesian statistics. I am also interested in efficient computing and machine learning in the 
-      fields of finance, medicine, and energy.
-    </p>
+    <svg class="wavelet" viewBox="0 0 720 64" aria-hidden="true" focusable="false">
+      <path d="M0,32.0 L3,32.0 L6,32.0 L9,32.0 L12,32.0 L15,32.0 L18,32.0 L21,32.0 L24,32.0 L27,32.0 L30,32.0 L33,32.0 L36,32.0 L39,32.0 L42,32.0 L45,32.0 L48,32.0 L51,32.0 L54,32.0 L57,32.0 L60,32.0 L63,32.0 L66,32.0 L69,32.0 L72,32.0 L75,32.0 L78,32.0 L81,32.0 L84,32.0 L87,32.0 L90,32.0 L93,32.0 L96,32.0 L99,32.0 L102,32.0 L105,32.0 L108,32.0 L111,32.0 L114,32.0 L117,32.0 L120,32.0 L123,32.0 L126,32.0 L129,32.0 L132,32.0 L135,32.0 L138,32.0 L141,32.0 L144,32.0 L147,32.0 L150,32.0 L153,32.0 L156,32.0 L159,32.0 L162,32.1 L165,32.1 L168,32.1 L171,32.2 L174,32.2 L177,32.2 L180,32.2 L183,32.2 L186,32.1 L189,32.1 L192,31.9 L195,31.8 L198,31.6 L201,31.4 L204,31.2 L207,31.0 L210,30.9 L213,30.8 L216,30.8 L219,30.9 L222,31.1 L225,31.5 L228,32.0 L231,32.6 L234,33.4 L237,34.2 L240,35.0 L243,35.7 L246,36.3 L249,36.6 L252,36.7 L255,36.4 L258,35.7 L261,34.6 L264,33.1 L267,31.2 L270,29.1 L273,26.8 L276,24.6 L279,22.7 L282,21.1 L285,20.1 L288,19.8 L291,20.4 L294,21.9 L297,24.3 L300,27.5 L303,31.4 L306,35.7 L309,40.1 L312,44.3 L315,48.1 L318,51.1 L321,52.9 L324,53.5 L327,52.7 L330,50.4 L333,46.8 L336,42.0 L339,36.4 L342,30.2 L345,24.1 L348,18.2 L351,13.2 L354,9.3 L357,6.8 L360,6.0 L363,6.8 L366,9.3 L369,13.2 L372,18.2 L375,24.1 L378,30.2 L381,36.4 L384,42.0 L387,46.8 L390,50.4 L393,52.7 L396,53.5 L399,52.9 L402,51.1 L405,48.1 L408,44.3 L411,40.1 L414,35.7 L417,31.4 L420,27.5 L423,24.3 L426,21.9 L429,20.4 L432,19.8 L435,20.1 L438,21.1 L441,22.7 L444,24.6 L447,26.8 L450,29.1 L453,31.2 L456,33.1 L459,34.6 L462,35.7 L465,36.4 L468,36.7 L471,36.6 L474,36.3 L477,35.7 L480,35.0 L483,34.2 L486,33.4 L489,32.6 L492,32.0 L495,31.5 L498,31.1 L501,30.9 L504,30.8 L507,30.8 L510,30.9 L513,31.0 L516,31.2 L519,31.4 L522,31.6 L525,31.8 L528,31.9 L531,32.1 L534,32.1 L537,32.2 L540,32.2 L543,32.2 L546,32.2 L549,32.2 L552,32.1 L555,32.1 L558,32.1 L561,32.0 L564,32.0 L567,32.0 L570,32.0 L573,32.0 L576,32.0 L579,32.0 L582,32.0 L585,32.0 L588,32.0 L591,32.0 L594,32.0 L597,32.0 L600,32.0 L603,32.0 L606,32.0 L609,32.0 L612,32.0 L615,32.0 L618,32.0 L621,32.0 L624,32.0 L627,32.0 L630,32.0 L633,32.0 L636,32.0 L639,32.0 L642,32.0 L645,32.0 L648,32.0 L651,32.0 L654,32.0 L657,32.0 L660,32.0 L663,32.0 L666,32.0 L669,32.0 L672,32.0 L675,32.0 L678,32.0 L681,32.0 L684,32.0 L687,32.0 L690,32.0 L693,32.0 L696,32.0 L699,32.0 L702,32.0 L705,32.0 L708,32.0 L711,32.0 L714,32.0 L717,32.0 L720,32.0"/>
+    </svg>
 
-    <h1>Education</h1>
-    <ul class= "compact-list">
-      <li> <b>Fall 2024 – Present</b>: Ph.D in Statistics, Texas A&M University, USA </li>
-      <li> <b>Fall 2022 – Spring 2024</b>: Master of Science in Statistics, Texas A&M University </li>
-      <li> <b>Fall 2019 – Fall 2021</b> : Bachelor's in Statistics, University of California, Davis. <br>
-            Minor: Mathematics </li>
-    </ul>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <!-- <li><a href="#publications">Publications</a></li> -->
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <!-- <li><a href="#awards">Awards</a></li> -->
+        <!-- <li><a href="#service">Service</a></li> -->
+      </ul>
+    </nav>
 
-    <h1>Research</h1>
-    <p>
-      My current research focuses on wavelet transformations for signal processing, and I am exploring Bayesian techiniques for enhancing sparsity. 
-    </p>
+    <main>
+      <section id="about">
+        <h2>About</h2>
+        <p>
+          I am a third-year PhD student in Statistics at Texas A&amp;M University, advised by
+          <a href="https://people.tamu.edu/~brani/">Brani Vidakovic</a>. My research lies at the
+          intersection of wavelet analysis and Bayesian statistics. I am also interested in efficient
+          computing and machine learning, with applications in finance, medicine, and energy.
+        </p>
+      </section>
 
-    <p>
-      Spring and Summer I 2026 - Graduate Research Assistant (GAR). 
-    </p>
+      <section id="research">
+        <h2>Research</h2>
+        <p>
+          My current research focuses on wavelet transformations for signal processing, and I am
+          exploring Bayesian techniques for enhancing sparsity.
+        </p>
+      </section>
 
-    <h1>Teaching</h1>
-    <p> I have been a Teaching Assistant for the following courses: </p>
-    <ul class= "compact-list">
-      <li> <b>Fall 2026 </b>: STAT 459/659 (Categorical Data Analysis)  </li>
-      <li> <b>Summer II 2026 </b>: STAT 211 (Principles of Statistics for Engineers)  </li>
-      <li> <b>Fall 2025 </b>: STAT 406 (Design and Analysis of Experiments)  </li>
-      <li> <b>Summer 2025 </b>: STAT 641 (The Methods of Statistics I)  </li>
-      <li> <b>Spring 2025 </b>: STAT 642 (The Methods of Statistics II) </li>
-      <li> <b>Fall 2024 </b>:  STAT 406 (Design and Analysis of Experiments)  </li>
-      <li> <b>Spring 2024 </b>: STAT 426 (Methods in Time Series Analysis) </li>
-      <li> <b>Fall 2023 </b>: STAT 312 (Statistics for Biology) </li>
-      <li> <b>Spring 2023 </b>: STAT 312 (Statistics for Biology)  </li>
-      <li> <b>Fall 2022 </b>: STAT 302 (Statistical Methods)  </li>
-    </ul>
+      <!-- PUBLICATIONS: I need to uncomment this section (and its nav link above) once I add papers.
+      <section id="publications">
+        <h2>Publications</h2>
+        <ol class="pubs">
+          <li>
+            <strong>Kulkarni, R.</strong> and Vidakovic, B. (2026). Title of the paper.
+            <em>Journal or Conference Name</em>. <a href="#">[paper]</a> <a href="#">[code]</a>
+          </li>
+        </ol>
+      </section>
+      -->
+
+      <section id="education">
+        <h2>Education</h2>
+        <dl class="entries">
+          <dt>2024 – present</dt>
+          <dd>PhD in Statistics, Texas A&amp;M University</dd>
+
+          <dt>2022 – 2024</dt>
+          <dd>MS in Statistics, Texas A&amp;M University</dd>
+
+          <dt>2019 – 2021</dt>
+          <dd>BS in Statistics, University of California, Davis
+            <span class="sub">Minor in Mathematics</span>
+          </dd>
+        </dl>
+      </section>
+
+      <section id="experience">
+        <h2>Experience</h2>
+        <dl class="entries">
+          <dt>Spring – Summer I 2026</dt>
+          <dd>Graduate Research Assistant, Department of Statistics, Texas A&amp;M University</dd>
+
+          <dt>2022 – present</dt>
+          <dd>Graduate Teaching Assistant, Department of Statistics, Texas A&amp;M University
+            <span class="sub">Ten semesters across eight courses; see below</span>
+          </dd>
+        </dl>
+      </section>
+
+      <section id="teaching">
+        <h2>Teaching</h2>
+        <p>I have been a teaching assistant for the following courses.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Course</th><th>Title</th><th>Terms</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="course">STAT 459/659</td><td>Categorical Data Analysis</td><td class="terms">Fall 2026</td></tr>
+              <tr><td class="course">STAT 211</td><td>Principles of Statistics for Engineers</td><td class="terms">Summer II 2026</td></tr>
+              <tr><td class="course">STAT 406</td><td>Design and Analysis of Experiments</td><td class="terms">Fall 2025, Fall 2024</td></tr>
+              <tr><td class="course">STAT 641</td><td>The Methods of Statistics I</td><td class="terms">Summer 2025</td></tr>
+              <tr><td class="course">STAT 642</td><td>The Methods of Statistics II</td><td class="terms">Spring 2025</td></tr>
+              <tr><td class="course">STAT 426</td><td>Methods in Time Series Analysis</td><td class="terms">Spring 2024</td></tr>
+              <tr><td class="course">STAT 312</td><td>Statistics for Biology</td><td class="terms">Fall 2023, Spring 2023</td></tr>
+              <tr><td class="course">STAT 302</td><td>Statistical Methods</td><td class="terms">Fall 2022</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- AWARDS:I need to later uncomment this section (and its nav link above) once I add awards.
+      <section id="awards">
+        <h2>Awards</h2>
+        <dl class="entries">
+          <dt>2026</dt>
+          <dd>Award name, awarding organization</dd>
+        </dl>
+      </section>
+      -->
+
+      <!-- SERVICE: I need to uncomment this section (and its nav link above) for outreach and service work.
+      <section id="service">
+        <h2>Service</h2>
+        <dl class="entries">
+          <dt>2025 – present</dt>
+          <dd>Role, organization
+            <span class="sub">One-line description of what I did</span>
+          </dd>
+        </dl>
+      </section>
+      -->
+    </main>
 
     <footer>
       &copy; 2026 Radhika Kulkarni
     </footer>
-  </div>
 
+  </div>
 </body>
 </html>
-
-
-
-
