@@ -48,12 +48,14 @@
     }
 
     .intro img {
-  width: 160px;
-  height: auto;
-  border-radius: 6px;
-  box-shadow: 0 0 0 1px var(--rule);
-  flex-shrink: 0;
-}
+      width: 160px;
+      aspect-ratio: 1 / 1;     
+      object-fit: cover;
+      object-position: center top;  
+      border-radius: 6px;
+      box-shadow: 0 0 0 1px var(--rule);
+      flex-shrink: 0;
+    }
 
     .intro-text { flex: 1; min-width: 240px; }
 
@@ -225,7 +227,14 @@
     td.terms { color: var(--muted); font-size: 0.92rem; }
 
     /* Publications */
-    .pubs { padding-left: 1.2em; }
+    .pub-group {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--muted);
+      margin: 1.4em 0 0.4em;
+    }
+    .pubs { padding-left: 1.2em; margin: 0; }
     .pubs li { margin-bottom: 0.9em; }
 
     footer {
@@ -241,7 +250,7 @@
     @media (max-width: 600px) {
       .page { padding-top: 32px; }
       header.intro { gap: 20px; }
-      .intro img { width: 112px; height: 112px; }
+      .intro img { width: 120px; }
       .intro h1 { font-size: 2rem; }
       .entries { grid-template-columns: 1fr; gap: 2px; }
       .entries dd { margin-bottom: 12px; }
@@ -282,7 +291,7 @@
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#research">Research</a></li>
-        <!-- <li><a href="#publications">Publications</a></li> -->
+        <li><a href="#publications">Publications</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#teaching">Teaching</a></li>
@@ -310,30 +319,55 @@
         </p>
       </section>
 
-      <!-- PUBLICATIONS: I need to uncomment this section (and its nav link above) once I add papers.
       <section id="publications">
         <h2>Publications</h2>
+
+        <h3 class="pub-group">Peer reviewed</h3>
         <ol class="pubs">
           <li>
-            <strong>Kulkarni, R.</strong> and Vidakovic, B. (2026). Title of the paper.
-            <em>Journal or Conference Name</em>. <a href="#">[paper]</a> <a href="#">[code]</a>
+            <strong>Kulkarni, R.</strong>, Pinheiro, A., Vidakovic, B., and Atto, A. M. (2026).
+            Smooth SCAD: A raised cosine thresholding rule for wavelet denoising.
+            <em>Mathematics</em>, 14(5), 787.
+            <a href="https://doi.org/10.3390/math14050787">[paper]</a>
+          </li>
+        </ol>
+
+        <h3 class="pub-group">Preprints</h3>
+        <ol class="pubs">
+          <li>
+            <strong>Kulkarni, R.</strong> and Vidakovic, B. (2026).
+            Composite wavelet matrix-based transforms and applications.
+            <em>arXiv:2603.02593</em>.
+            <a href="https://arxiv.org/abs/2603.02593">[preprint]</a>
+          </li>
+        </ol>
+
+        <h3 class="pub-group">Software</h3>
+        <ol class="pubs">
+          <li>
+            <strong>Kulkarni, R.</strong> (2024). stheatmap: Heatmaps and rolling-average smoothers
+            for visualizing large spatiotemporal data.
+            <a href="https://github.com/rrkulkarni108/stheatmap">[code]</a>
           </li>
         </ol>
       </section>
-      -->
 
       <section id="education">
         <h2>Education</h2>
         <dl class="entries">
           <dt>2024 – present</dt>
-          <dd>PhD in Statistics, Texas A&amp;M University</dd>
+          <dd>PhD in Statistics, Texas A&amp;M University
+            <span class="sub">GPA: 3.80 (current)</span>
+          </dd>
 
           <dt>2022 – 2024</dt>
-          <dd>MS in Statistics, Texas A&amp;M University</dd>
+          <dd>MS in Statistics, Texas A&amp;M University
+            <span class="sub">GPA: 3.92</span>
+          </dd>
 
           <dt>2019 – 2021</dt>
           <dd>BS in Statistics, University of California, Davis
-            <span class="sub">Minor in Mathematics</span>
+            <span class="sub">Minor in Mathematics. GPA: 3.81</span>
           </dd>
         </dl>
       </section>
@@ -373,7 +407,7 @@
         </div>
       </section>
 
-      <!-- AWARDS:I need to later uncomment this section (and its nav link above) once I add awards.
+      <!-- AWARDS: I need to later uncomment this section (and its nav link above) once I add awards.
       <section id="awards">
         <h2>Awards</h2>
         <dl class="entries">
